@@ -1,4 +1,4 @@
-package step1.chapter1.lesson2;
+package phase1.chapter1.lesson2;
 
 // 基本数据类型为：
 // boolean byte char short int long float double
@@ -9,7 +9,7 @@ package step1.chapter1.lesson2;
 // 基本数据类型包装类为：
 // Boolean Byte Character Short Integer Long Float Double
 
-import step1.chapter1.lesson4.ArrayGenerator;
+import phase1.chapter1.lesson4.ArrayGenerator;
 
 public class LinearSearchUseGenerics {
   private LinearSearchUseGenerics() {}

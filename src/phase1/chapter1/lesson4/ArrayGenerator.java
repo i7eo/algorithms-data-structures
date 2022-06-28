@@ -1,4 +1,4 @@
-package step1.chapter1.lesson4;
+package phase1.chapter1.lesson4;
 
 public class ArrayGenerator {
   private ArrayGenerator() {}

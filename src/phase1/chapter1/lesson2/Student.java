@@ -1,7 +1,7 @@
-package step1.chapter1.lesson2;
+package phase1.chapter1.lesson2;
 
 public class Student {
-  private String name;
+  private final String name;
 
   public Student(String name) {
     this.name = name;
