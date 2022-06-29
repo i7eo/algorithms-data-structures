@@ -2,7 +2,6 @@ package helper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 public class SortHelper {
   private SortHelper() {}
@@ -19,15 +18,17 @@ public class SortHelper {
 
     try {
       Class<?> SortClass = Class.forName(name);
-      Arrays.stream(SortClass.getMethods())
-          .forEach(
-              method -> {
-                System.out.println(method);
-              });
+      //      Arrays.stream(SortClass.getMethods())
+      //          .forEach(
+      //              method -> {
+      //                System.out.println(method);
+      //              });
 
+      // 如果函数参数为泛型，则参数传入 Object 即可，因为泛型最终会被jvm类型剔除为Object 而 Object 是所有包装类、interface等的祖先
       Method sort = SortClass.getMethod("sort", Comparable[].class);
-      System.out.println(sort);
-      sort.invoke(SortClass, arr);
+      // method.invoke默认会隐式将传入的参数放在Object[]中的第一个元素，当传入的是数组时，编辑器认为所有参数在数组中了，
+      // 不会再隐式包装，实际传入的参数不是数组，而是数组中的所有参数，所以需要手动new Object[],将数组对象放入
+      sort.invoke(SortClass, new Object[] {arr});
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
     } catch (NoSuchMethodException e) {
