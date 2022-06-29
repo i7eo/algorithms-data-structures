@@ -1,4 +1,4 @@
-package phase1.chapter1.lesson4;
+package helper;
 
 import java.util.Random;
 

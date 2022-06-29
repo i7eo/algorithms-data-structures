@@ -1,5 +1,8 @@
 package phase1.chapter2.lesson2;
 
+import helper.ArrayGenerator;
+import helper.SortHelper;
+
 public class SelectionSort {
   private SelectionSort() {}
 
@@ -29,18 +32,28 @@ public class SelectionSort {
 
     // java 中使用泛型时，不能将基本类型传入泛型，必须使用类型
 
-    Integer[] arr = {1, 4, 2, 3, 6, 5};
-    SelectionSort.sort(arr);
-    for (int e : arr) {
-      System.out.print(e + " ");
-    }
-    System.out.println();
+    //    Integer[] arr = {1, 4, 2, 3, 6, 5};
+    //    SelectionSort.sort(arr);
+    //    for (int e : arr) {
+    //      System.out.print(e + " ");
+    //    }
+    //    System.out.println();
+    //
+    //    Student[] students = {
+    //      new Student("Alice", 98), new Student("i7eo", 95), new Student("Eva", 100),
+    //    };
+    //    SelectionSort.sort(students);
+    //    for (Student student : students) System.out.print(student + " ");
+    //    System.out.println();
 
-    Student[] students = {
-      new Student("Alice", 98), new Student("i7eo", 95), new Student("Eva", 100),
-    };
-    SelectionSort.sort(students);
-    for (Student student : students) System.out.print(student + " ");
-    System.out.println();
+    // 使用chapter1中的ArrayGenerator生成大数据数组来测试性能
+    //    int max = 10000;
+    //    Integer[] arr = ArrayGenerator.generateRandomArray(max, max);
+    //    SortHelper.sortTest("SelectionSort", arr);
+    int[] dataSize = {10000, 100000};
+    for (int n : dataSize) {
+      Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
+      SortHelper.sortTest("phase1.chapter2.lesson2.SelectionSort", arr);
+    }
   }
 }
