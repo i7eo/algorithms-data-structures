@@ -2,6 +2,7 @@ package helper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class SortHelper {
   private SortHelper() {}
@@ -51,6 +52,8 @@ public class SortHelper {
     long endTime = System.nanoTime();
 
     double time = (endTime - startTime) / 1000000000.0;
+
+    System.out.println(Arrays.toString(arr));
 
     if (!SortHelper.isSorted(arr)) throw new RuntimeException("SelectionSort failed.");
 
