@@ -2,7 +2,6 @@ package helper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 public class SortHelper {
   private SortHelper() {}
@@ -14,7 +13,7 @@ public class SortHelper {
     return true;
   }
 
-  public static <T extends Comparable<T>> void sortTest(String name, T[] arr) {
+  public static <T extends Comparable<T>> void sortTest(String name, T[] arr, String sortName) {
     long startTime = System.nanoTime();
 
     try {
@@ -26,7 +25,7 @@ public class SortHelper {
       //              });
 
       // 如果函数参数为泛型，则参数传入 Object 即可，因为泛型最终会被jvm类型剔除为Object 而 Object 是所有包装类、interface等的祖先
-      Method sort = SortClass.getMethod("sort", Comparable[].class);
+      Method sort = SortClass.getMethod(sortName, Comparable[].class);
       // method.invoke默认会隐式将传入的参数放在Object[]中的第一个元素，当传入的是数组时，编辑器认为所有参数在数组中了，
       // 不会再隐式包装，实际传入的参数不是数组，而是数组中的所有参数，所以需要手动new Object[],将数组对象放入
       sort.invoke(SortClass, new Object[] {arr});
@@ -53,10 +52,9 @@ public class SortHelper {
 
     double time = (endTime - startTime) / 1000000000.0;
 
-    System.out.println(Arrays.toString(arr));
-
     if (!SortHelper.isSorted(arr)) throw new RuntimeException("SelectionSort failed.");
 
-    System.out.println(String.format("[%s], n = %d, spends %fs", name, arr.length, time));
+    System.out.println(
+        String.format("[%s, %s], n = %d, spends %fs", name, sortName, arr.length, time));
   }
 }

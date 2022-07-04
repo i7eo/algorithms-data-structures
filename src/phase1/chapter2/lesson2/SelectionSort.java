@@ -79,12 +79,12 @@ public class SelectionSort {
     //    int max = 10000;
     //    Integer[] arr = ArrayGenerator.generateRandomArray(max, max);
     //    SortHelper.sortTest("SelectionSort", arr);
-    int[] dataSize = {10, 10};
+    int[] dataSize = {100000, 100000};
     for (int n : dataSize) {
       Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
       //      SortHelper.sortTest("phase1.chapter2.lesson2.SelectionSort", arr);
       String classPath = SelectionSort.class.getCanonicalName();
-      SortHelper.sortTest(classPath, arr);
+      SortHelper.sortTest(classPath, arr, "sort");
     }
   }
 }
