@@ -15,6 +15,23 @@ public class InsertionSort {
   }
 
   /**
+   * 这样不行的原因是如果用 j 和 i 比较，则并不会对子序列产生影响，而插入排序的思想是子序列要有序，所以必须是子序列逐一比较
+   *
+   * @param arr
+   */
+  //  public static void sort0(int[] arr) {
+  //    for (int i = 1; i < arr.length; i++) {
+  //      for (int j = i - 1; j >= 0; j--) {
+  //        if (arr[i] < arr[j]) {
+  //          int t = arr[i];
+  //          arr[i] = arr[j];
+  //          arr[j] = t;
+  //        }
+  //      }
+  //    }
+  //  }
+
+  /**
    * 思路： 用当前值与子序列一一比较后，进行交换。 交换完毕后为了防止第二层循环丢失索引位置，所以需要swapIdx来记录
    *
    * @param arr
@@ -57,21 +74,28 @@ public class InsertionSort {
     for (int i = 0; i < arr.length; i++) {
       T t = arr[i];
       Integer j;
-      for (j = i; j - 1 >= 0 && arr[j].compareTo(arr[j - 1]) < 0; j--) {
-        arr[j - 1] = arr[j];
+      for (j = i; j - 1 >= 0 && t.compareTo(arr[j - 1]) < 0; j--) {
+        arr[j] = arr[j - 1];
       }
       arr[j] = t;
     }
   }
 
   public static void main(String[] args) {
-    int[] dataSize = {10000, 100000};
+    //    int[] arr = {6, 3, 2, 5, 1, 4};
+    //    InsertionSort.sort0(arr);
+    //    for (int e : arr) System.out.print(e + " ");
+    //    System.out.println();
+
+    int[] dataSize = {10};
     for (int n : dataSize) {
       Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
       Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+      System.out.println(Arrays.toString(arr2));
       String classPath = InsertionSort.class.getCanonicalName();
-      SortHelper.sortTest(classPath, arr, "sort");
+      //      SortHelper.sortTest(classPath, arr, "sort");
       SortHelper.sortTest(classPath, arr2, "sort2");
+      System.out.println(Arrays.toString(arr2));
     }
   }
 }
