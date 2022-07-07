@@ -87,15 +87,19 @@ public class InsertionSort {
     //    for (int e : arr) System.out.print(e + " ");
     //    System.out.println();
 
-    int[] dataSize = {10};
+    int[] dataSize = {10000, 100000};
     for (int n : dataSize) {
       Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
       Integer[] arr2 = Arrays.copyOf(arr, arr.length);
-      System.out.println(Arrays.toString(arr2));
+      Integer[] arr3 = ArrayGenerator.generateOrderedArray(n);
       String classPath = InsertionSort.class.getCanonicalName();
-      //      SortHelper.sortTest(classPath, arr, "sort");
+      System.out.println("generateRandomArray test");
+      SortHelper.sortTest(classPath, arr, "sort");
       SortHelper.sortTest(classPath, arr2, "sort2");
-      System.out.println(Arrays.toString(arr2));
+      System.out.println("generateOrderedArray test");
+      // 有序数组，插入排序直接✈️
+      SortHelper.sortTest(classPath, arr3, "sort");
+      SortHelper.sortTest(classPath, arr3, "sort2");
     }
   }
 }
